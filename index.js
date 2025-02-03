@@ -1,7 +1,7 @@
-const apiKey = "8f53e49a373356f9bdd578665a79e5b5"; // Replace with your OpenWeatherMap API key
+const apiKey = "8f53e49a373356f9bdd578665a79e5b5";
 let isCelsius = true;
 
-// Function to fetch weather data by city name
+
 const getWeather = (city) => {
   const unit = isCelsius ? "metric" : "imperial";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
@@ -18,7 +18,7 @@ const getWeather = (city) => {
     });
 };
 
-// Function to fetch weather data by geolocation
+
 const getWeatherByLocation = (lat, lon) => {
   const unit = isCelsius ? "metric" : "imperial";
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
@@ -35,7 +35,7 @@ const getWeatherByLocation = (lat, lon) => {
     });
 };
 
-// Function to display weather data
+
 const displayWeather = (data) => {
   const weatherDisplay = document.getElementById("weatherDisplay");
   const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
@@ -52,7 +52,7 @@ const displayWeather = (data) => {
   `;
 };
 
-// Function to handle form submission
+
 document.getElementById("weatherForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const city = document.getElementById("cityInput").value.trim();
@@ -72,7 +72,7 @@ document.getElementById("weatherForm").addEventListener("submit", (e) => {
   }
 });
 
-// Function to handle geolocation button click
+
 document.getElementById("geolocationBtn").addEventListener("click", () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -102,7 +102,6 @@ document.getElementById("geolocationBtn").addEventListener("click", () => {
   }
 });
 
-// Function to handle unit toggle
 document.getElementById("unitSwitch").addEventListener("change", () => {
   isCelsius = !isCelsius;
   const city = document.getElementById("cityInput").value.trim();
